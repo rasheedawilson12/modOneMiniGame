@@ -1,0 +1,16 @@
+.gameContainer {
+  display: flex;
+  height: 50vh;
+  border: solid black;
+}
+.playerOne {
+  height: 50vh;
+  width: 50%;
+  border: solid red;
+}
+
+.playerTwo {
+  height: 50vh;
+  width: 50%;
+  border: solid blue;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Game Container -->
+    <div class="gameContainer">
+      <!-- Player One -->
+      <div class="playerOne">
+        <button class="player1" onclick="attackPlayerTwo(playerTwo)">
+          Fire
+        </button>
+      </div>
+
+      <!-- Player Two -->
+      <div class="playerTwo">
+        <button class="player2" onclick="attackPlayerOne(playerOne)">
+          Fire
+        </button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
