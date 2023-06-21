@@ -1,16 +1,110 @@
-.gameContainer {
+.gameHeader {
   display: flex;
-  height: 50vh;
-  border: solid black;
+  justify-content: space-evenly;
+  align-items: center;
+  border: solid purple;
+  height: 25vh;
+  margin-bottom: 30px;
+}
+
+.playerOneHeader {
+  border: solid salmon;
+  height: 25vh;
+  width: 35%;
+}
+
+.playerOneName {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.roundHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  border: solid lime;
+  border-radius: 50%;
+  height: 20vh;
+  width: 25%;
+}
+
+.playerTwoHeader {
+  border: solid seagreen;
+  height: 25vh;
+  width: 35%;
+}
+
+.gameStage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .playerOne {
-  height: 50vh;
   width: 50%;
-  border: solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerOneImg {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  width: 75%;
+  height: 60%;
 }
 
 .playerTwo {
-  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50%;
-  border: solid blue;
+}
+
+.playerTwoImg {
+  height: 100%;
+  width: 100%;
+}
+
+.alien {
+  width: 75%;
+  height: 60%;
+}
+
+.feed {
+  display: flex;
+  margin: 30px 0;
+  border: solid blueviolet;
+  height: 15vh;
+}
+
+.playerOneFeed {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  height: 15vh;
+  width: 50%;
+  border-right: solid blueviolet;
+}
+
+.playerTwoFeed {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  height: 15vh;
+  width: 50%;
+}
+.controls {
+  margin-top: 30px;
+  border: solid black;
+  height: 25vh;
+  width: 100%;
 }
