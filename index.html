@@ -52,7 +52,12 @@
 
     <!-- Controls -->
     <div class="controls">
-      <button class="player1" onclick="startRound(playerOne, playerTwo)">
+      <div class="attack">
+        <button class="attackBtn" onclick="startRound(playerOne, playerTwo)">
+          Attack!
+        </button>
+      </div>
+      <button class="player1" onclick="attackPlayerTwo(playerOne)">
         PlayerOne
       </button>
       <button class="player2" onclick="attackPlayerOne(playerTwo)">

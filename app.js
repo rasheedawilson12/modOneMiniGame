@@ -58,33 +58,32 @@ let playerTwo = {
 // Function List
 
 const startRound = (player) => {
+  round = 1;
   playerOneHealth.innerHTML = `${playerOne.health}`;
   playerTwoHealth.innerHTML = `${playerTwo.health}`;
+  playerTwo.name.innerHTML = `${playerTwo.name[i]}`;
   playerOneFeed.innerHTML = "";
   playerTwoFeed.innerHTML = "";
-  while (playerOne.health > 0 || playerTwo.health > 0) {
-    setInterval(() => {
-      attackPlayerTwo(player);
-    }, 16000);
-    setInterval(() => {
-      attackPlayerOne(player);
-    }, 32000);
-  }
+  attackPlayerTwo(player);
+  setTimeout(() => {
+    attackPlayerOne(player);
+  }, "6000");
+  checkHP(player);
 };
 
 const attackPlayerTwo = (player) => {
   setTimeout(() => {
-    playerTwoFeed.innerHTML = `${player.name} is preparing to fire!`;
+    playerTwoFeed.innerHTML = `${playerOne.name} is preparing to fire!`;
   }, "2000");
-  let currentLife = player.health;
+  let currentLife = playerOne.health;
   if (playerOne.turnToAttack === true) {
-    if (sucessfulHit < player.accuracy(1, 10)) {
-      currentLife = player.health -= player.firepower(1, 10);
+    if (sucessfulHit < playerOne.accuracy(1, 10)) {
+      currentLife = playerTwo.health -= playerOne.firepower(1, 10);
       setTimeout(() => {
-        playerTwoFeed.innerHTML = `${player.name} has fired!`;
+        playerTwoFeed.innerHTML = `${playerOne.name} has fired!`;
       }, "3000");
       setTimeout(() => {
-        playerTwoFeed.innerHTML = `${player.name}'s hit was sucuccessful!`;
+        playerTwoFeed.innerHTML = `${playerOne.name}'s hit was sucuccessful!`;
       }, "5000");
       setTimeout(() => {
         playerTwoFeed.innerHTML = `${playerTwo.name[i]} health is now ${currentLife}`;
@@ -92,19 +91,11 @@ const attackPlayerTwo = (player) => {
       setTimeout(() => {
         playerTwoHealth.innerHTML = `${currentLife}`;
       }, "6000");
-
-      if (currentLife <= 0) {
-        setTimeout(() => {
-          playerTwoFeed.innerHTML = `${playerOne.name} has lost the round`;
-        }, "1000");
-        nextRound();
-      }
-    } else {
       setTimeout(() => {
-        playerTwoFeed.innerHTML = `${player.name}'s attack was unsecessful!`;
+        playerTwoFeed.innerHTML = `${playerTwo.name}'s attack was unsecessful!`;
       }, "3000");
       setTimeout(() => {
-        playerTwoFeed.innerHTML = `${player.name} health is now ${currentLife}`;
+        playerTwoFeed.innerHTML = `${playerOne.name} health is now ${currentLife}`;
       }, "5000");
       setTimeout(() => {
         playerOneHealth.innerHTML = `${currentLife}`;
@@ -116,22 +107,22 @@ const attackPlayerTwo = (player) => {
 };
 
 const attackPlayerOne = (player) => {
-  let currentLife = player.health;
+  let currentLife = playerTwo.health;
   if (playerTwo.turnToAttack === true) {
-    if (sucessfulHit < player.accuracy(1, 10)) {
-      currentLife = player.health -= player.firepower(1, 10);
+    if (sucessfulHit < playerTwo.accuracy(1, 10)) {
+      currentLife = playerTwo.health -= playerOne.firepower(1, 10);
       setTimeout(() => {
-        playerOneFeed.innerHTML = `${player.name[i]} has fired!`;
-      }, "18000");
+        playerOneFeed.innerHTML = `${playerTwo.name[i]} has fired!`;
+      }, "2000");
       setTimeout(() => {
-        playerOneFeed.innerHTML = `${player.name[i]}'s hit was sucuccessful!`;
-      }, "20000");
+        playerOneFeed.innerHTML = `${playerTwo.name[i]}'s hit was sucuccessful!`;
+      }, "3000");
       setTimeout(() => {
         playerOneFeed.innerHTML = `${playerOne.name} health is now ${currentLife}`;
-      }, "21000");
+      }, "5000");
       setTimeout(() => {
         playerOneHealth.innerHTML = `${currentLife}`;
-      }, "21000");
+      }, "5000");
 
       if (currentLife <= 0) {
         setTimeout(() => {
@@ -140,22 +131,32 @@ const attackPlayerOne = (player) => {
       }
     } else {
       setTimeout(() => {
-        playerOneFeed.innerHTML = `${player.name[i]}'s attack was unsecessful!`;
-      }, "20000");
+        playerOneFeed.innerHTML = `${playerTwo.name[i]}'s attack was unsecessful!`;
+      }, "5000");
       setTimeout(() => {
-        playerOneFeed.innerHTML = `${player.name[i]} health is now ${currentLife}`;
-      }, "21000");
+        playerOneFeed.innerHTML = `${playerTwo.name[i]} health is now ${currentLife}`;
+      }, "6000");
       setTimeout(() => {
         playerOneHealth.innerHTML = `${currentLife}`;
-      }, "21000");
+      }, "6000");
     }
   }
   playerTwo.turnToAttack = false;
   playerOne.turnToAttack = true;
 };
 
+const checkHP = (player) => {
+  if (playerOne.health <= 0) {
+    alert(`${playerOne.name[i]} has lost this round!`);
+    nextRound();
+  } else if (playerTwo.health <= 0) {
+    alert(`${playerTwo.name[i]} has lost this round!`);
+    nextRound();
+  }
+};
+
 const nextRound = () => {
-  if (round < 6) {
+  if (round <= 6) {
     round += 1;
     currentRound.innerHTML = `Round <br>${round}`;
     if (i < playerTwo.name.length) {
@@ -167,7 +168,7 @@ const nextRound = () => {
     //   alien.setAttribute(src, playerTwo.image[j]);
     // }
   } else {
-    console.log("Game Over");
+    return "Game Over";
   }
   startRound();
 };
