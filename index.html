@@ -7,15 +7,25 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="gameTitle">
+      <img
+        src="https://e0.pxfuel.com/wallpapers/5/687/desktop-wallpaper-spaceship-clipart-easy-cartoon-spaceship-easy-cartoon-transparent-for-on-webstockreview-2021-rocket-cartoon.jpg"
+        alt=""
+        class="spaceshipImg"
+      />
+      <h1>SPACE BATTLE</h1>
+    </div>
     <!-- Game Header -->
     <div class="gameHeader">
       <div class="playerOneHeader">
+        <h1>CURRENT HERO:</h1>
         <h1>Name: <span class="playerOneName"></span></h1>
 
         <h1>Health: <span class="playerOneHealth"></span></h1>
       </div>
       <div class="roundHeader"></div>
       <div class="playerTwoHeader">
+        <h1>CURRENT OPPONENT:</h1>
         <h1>Name: <span class="playerTwoName"></span></h1>
         <h1>Health: <span class="playerTwoHealth"></span></h1>
       </div>
@@ -40,11 +50,12 @@
     </div>
 
     <!-- Controls -->
+    <h1>PLAYER ONE CONTROLS</h1>
     <div class="controls">
-      <div class="attack">
-        <button class="attackBtn" onclick="startRound(playerTwo)">
-          Attack!
-        </button>
+      <div class="controlButtons">
+        <button class="attack" onclick="startRound(playerTwo)">Attack!</button>
+        <button class="retreat">RETREAT</button>
+        <button class="reset" onclick="resetGame()">RESET GAME</button>
       </div>
       <!-- <button class="player1" onclick="attackPlayerTwo(playerOne)">
         PlayerOne

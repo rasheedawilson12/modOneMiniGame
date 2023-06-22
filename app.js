@@ -75,8 +75,7 @@ let alienFive = {
   firepower: getRandomNumber(2, 4),
   accuracy: getRandomNumber(6, 8),
   turnToAttack: false,
-  image:
-    "https://pa1.aminoapps.com/6819/2a161e8efde898096cbce4391b0022b980a41ed0_hq.gif",
+  image: "https://media.tenor.com/7bR2RsnoMugAAAAd/futurama-valentines-day.gif",
 };
 
 let alienSix = {
@@ -100,7 +99,8 @@ let alienScum = [
 let playerTwo = alienOne;
 let counter = 0;
 
-currentRound.innerHTML = `${counter}`;
+feed.innerHTML = `THE BATTLE HAS BUGUN! <br> PLAYER ONE ATTACK!`;
+currentRound.innerHTML = `Enemies Defeated: <br>${counter}`;
 playerOneName.innerHTML = `${playerOne.name}`;
 playerTwoName.innerHTML = `${playerTwo.name}`;
 playerOneHealth.innerHTML = `${playerOne.hull}`;
@@ -121,26 +121,32 @@ const alienHP = () => {
   if (playerTwo.hull <= 0) {
     alert(`${playerTwo.name} has lost this round`);
     switchAlien();
-    counter += 1;
-    playerTwo = alienScum[counter];
+    // counter += 1;
+    // playerTwo = alienScum[counter];
   } else {
     setTimeout(() => {
       alienAttack();
       heroHP();
-    }, "6000");
+    }, "8000");
   }
 };
 
 const startRound = () => {
-  heroAttack();
-  alienHP();
+  if (playerTwo.hull <= 0) {
+    switchAlien();
+  } else {
+    heroAttack();
+    setTimeout(() => {
+      alienHP();
+    }, "8000");
+  }
 };
 
 const heroAttack = () => {
   setTimeout(() => {
     feed.innerHTML = `${playerOne.name} is preparing to fire!`;
   }, "2000");
-  let currentLife = playerOne.hull;
+  let currentLife = playerTwo.hull;
   if (playerOne.turnToAttack === true) {
     if (sucessfulHit < playerOne.accuracy) {
       currentLife = playerTwo.hull -= playerOne.firepower;
@@ -168,12 +174,10 @@ const heroAttack = () => {
       }, "5000");
     }
   }
-  playerOne.turnToAttack = false;
-  playerTwo.turnToAttack = true;
 };
 
 const alienAttack = () => {
-  let currentLife = playerTwo.hull;
+  let currentLife = playerOne.hull;
   if (playerTwo.turnToAttack === true) {
     if (sucessfulHit < playerTwo.accuracy) {
       currentLife = playerTwo.hull -= playerOne.firepower;
@@ -207,19 +211,24 @@ const alienAttack = () => {
       }, "6000");
     }
   }
-  playerTwo.turnToAttack = false;
-  playerOne.turnToAttack = true;
 };
 
-switchAlien = (playerTwo) => {
-  playerTwo = alienScum[counter];
-  alienImg.setAttribute("src", playerTwo.image);
-  playerTwoName.replaceWith = `${playerTwo.name}`;
-  playerTwoHealth.innerHTML = `${playerTwo.hull}`;
-  // feed.innerHTML = "NEW OPPONENT!";
-  // setTimeout(() => {
-  //   feed.innerHTML = `Now Battling ${playerTwo.name}`;
-  // }, "1000");
+switchAlien = () => {
+  if (counter <= 6) {
+    counter++;
+    playerTwo = alienScum[counter];
+    currentRound.innerHTML = `DEFEATED OPPONENTS: <br>${counter}`;
+    alienImg.setAttribute("src", playerTwo.image);
+    playerTwoName.innerHTML = `${playerTwo.name}`;
+    playerTwoHealth.innerHTML = `${playerTwo.hull}`;
+    feed.innerHTML = "";
+    feed.innerHTML = "NEW OPPONENT!";
+    setTimeout(() => {
+      feed.innerHTML = `Now Battling ${playerTwo.name} <br> Player One ATTACK!`;
+    }, "1000");
+  } else {
+    alert("GAME OVER! YOU HAVE WON!");
+  }
 };
 
 const resetGame = () => {
