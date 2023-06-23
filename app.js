@@ -1,4 +1,8 @@
 // Global Variables
+// Example use of accuracy to determine a hit:
+// if (Math.random() < alien[0].accuracy) {
+//   console.log("You have been hit!");
+// }
 let sucessfulHit = Math.floor(Math.random() * (10, 1) + 1);
 const getRandomNumber = (min, max) => {
   let randomNumber = Math.floor(Math.random() * (max - min) + min);
@@ -23,6 +27,11 @@ playerTwoHealth = document.querySelector(".playerTwoHealth");
 let alienImg = document.querySelector(".alien");
 
 // Player Objects
+// Your spaceship, the USS Assembly should have the following properties:
+
+// hull - 20
+// firepower - 5
+// accuracy - .7
 let playerOne = {
   name: "USS Assembly",
   hull: 20,
@@ -32,6 +41,13 @@ let playerOne = {
   image:
     "https://media.tenor.com/oHgHEzWWAFQAAAAC/space-adventure-cobra-spaceship.gif",
 };
+
+// The alien ships should each have the following ranged properties determined randomly:
+
+// hull - between 3and 6
+// firepower - between 2and 4
+// accuracy - between .6and .8
+// You could be battling six alien ships each with unique values.
 
 let alienOne = {
   name: "Kang & Konos",
@@ -109,14 +125,18 @@ heroImg.setAttribute("src", playerOne.image);
 alienImg.setAttribute("src", playerTwo.image);
 
 // Function List
+
+// If you survive, you attack the ship again
 const heroHP = () => {
+  // You lose the game if you are destroyed
   if (playerOne.hull <= 0) {
     alert("Game Over");
   } else {
     startRound(playerTwo);
   }
 };
-
+// If the ship survives, it attacks you
+// If it survives, it attacks you again ... etc
 const alienHP = () => {
   if (playerTwo.hull <= 0) {
     alert(`${playerTwo.name} has lost this round`);
@@ -135,15 +155,19 @@ const startGame = () => {
   gameStage.classList.remove("hide");
   gameOver.classList.add("hide");
 };
-
+// You attack the first alien ship
 const startRound = () => {
-  if (playerTwo.hull <= 0) {
-    switchAlien();
+  if (counter <= alienScum.length) {
+    if (playerTwo.hull <= 0) {
+      switchAlien();
+    } else {
+      heroAttack();
+      setTimeout(() => {
+        alienHP();
+      }, "8000");
+    }
   } else {
-    heroAttack();
-    setTimeout(() => {
-      alienHP();
-    }, "8000");
+    alert("GAME OVER! YOU HAVE WON!");
   }
 };
 
@@ -180,7 +204,6 @@ const heroAttack = () => {
     }
   }
 };
-
 const alienAttack = () => {
   let currentLife = playerOne.hull;
   if (playerTwo.turnToAttack === true) {
@@ -219,7 +242,7 @@ const alienAttack = () => {
 };
 
 const switchAlien = () => {
-  if (counter <= 6) {
+  if (counter <= alienScum.length) {
     counter++;
     playerTwo = alienScum[counter];
     currentRound.innerHTML = `DEFEATED OPPONENTS: <br>${counter}`;
@@ -229,13 +252,16 @@ const switchAlien = () => {
     feed.innerHTML = "";
     feed.innerHTML = "NEW OPPONENT!";
     setTimeout(() => {
-      feed.innerHTML = `Now Battling ${playerTwo.name} <br> Player One ATTACK!`;
+      feed.innerHTML = `Now Battling ${playerTwo.name} <br> Player One ATTACK or RETREAT!`;
     }, "1000");
   } else {
+    // You win the game if you destroy all of the aliens
     alert("GAME OVER! YOU HAVE WON!");
   }
 };
 
+// If you destroy the ship, you have the option to attack the next ship or to retreat
+// If you retreat, the game is over, perhaps leaving the game open for further developments or options
 const retreat = () => {
   let gameStage = document.querySelector(".gameStage");
   let gameOver = document.querySelector(".gameOver");

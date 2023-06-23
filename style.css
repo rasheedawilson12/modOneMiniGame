@@ -120,6 +120,7 @@ h1 {
   height: 75%;
   margin: 0 auto;
   margin-bottom: 50px;
+  border: solid white;
 }
 
 .gameFeed {
