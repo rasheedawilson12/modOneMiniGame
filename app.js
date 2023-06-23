@@ -110,7 +110,7 @@ alienImg.setAttribute("src", playerTwo.image);
 
 // Function List
 const heroHP = () => {
-  if (playerTwo.hull <= 0) {
+  if (playerOne.hull <= 0) {
     alert("Game Over");
   } else {
     startRound(playerTwo);
@@ -121,14 +121,19 @@ const alienHP = () => {
   if (playerTwo.hull <= 0) {
     alert(`${playerTwo.name} has lost this round`);
     switchAlien();
-    // counter += 1;
-    // playerTwo = alienScum[counter];
   } else {
     setTimeout(() => {
       alienAttack();
       heroHP();
     }, "8000");
   }
+};
+
+const startGame = () => {
+  let gameStage = document.querySelector(".gameStage");
+  let gameOver = document.querySelector(".gameOver");
+  gameStage.classList.remove("hide");
+  gameOver.classList.add("hide");
 };
 
 const startRound = () => {
@@ -213,7 +218,7 @@ const alienAttack = () => {
   }
 };
 
-switchAlien = () => {
+const switchAlien = () => {
   if (counter <= 6) {
     counter++;
     playerTwo = alienScum[counter];
@@ -231,6 +236,24 @@ switchAlien = () => {
   }
 };
 
-const resetGame = () => {
-  playerTwo = alienScum[0];
+const retreat = () => {
+  let gameStage = document.querySelector(".gameStage");
+  let gameOver = document.querySelector(".gameOver");
+  const retreat = prompt(
+    "Are you sure you would like to retreat? If you do the game is over?"
+  );
+  if (retreat === "yes" || retreat === "Yes" || retreat === "YES") {
+    // Game Over
+    gameStage.classList.add("hide");
+    gameOver.classList.remove("hide");
+  } else if (retreat === "no" || retreat === "No" || retreat === "NO") {
+    alert("You are brave! The Battle continues!");
+  } else {
+    alert("Invalid repsonsce! The battle continues");
+  }
 };
+
+// const resetGame = () => {
+//   let counter = 0;
+//   playerTwo = alienScum[counter];
+// };

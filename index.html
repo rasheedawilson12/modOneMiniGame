@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Space Battle</title>
+    <link
+      rel="icon"
+      href="https://e0.pxfuel.com/wallpapers/5/687/desktop-wallpaper-spaceship-clipart-easy-cartoon-spaceship-easy-cartoon-transparent-for-on-webstockreview-2021-rocket-cartoon.jpg"
+    />
   </head>
   <body>
     <div class="gameTitle">
@@ -20,7 +24,6 @@
       <div class="playerOneHeader">
         <h1>CURRENT HERO:</h1>
         <h1>Name: <span class="playerOneName"></span></h1>
-
         <h1>Health: <span class="playerOneHealth"></span></h1>
       </div>
       <div class="roundHeader"></div>
@@ -30,9 +33,40 @@
         <h1>Health: <span class="playerTwoHealth"></span></h1>
       </div>
     </div>
-    <!-- Feed -->
-    <div class="feed"></div>
-    <!-- Game Container -->
+    <div class="gameFeed">
+      <!-- Feed -->
+      <div class="feed"></div>
+      <!-- Controls -->
+      <div class="controls">
+        <h1>PLAYER ONE CONTROLS</h1>
+
+        <div class="controlButtons">
+          <button class="attack" onclick="startRound(playerTwo)">
+            Attack!
+          </button>
+          <button class="retreat" onclick="retreat()">RETREAT</button>
+          <!-- <button class="reset" onclick="resetGame()">RESET GAME</button> -->
+        </div>
+        <!-- <button class="player1" onclick="attackPlayerTwo(playerOne)">
+        PlayerOne
+      </button>
+      <button class="player2" onclick="attackPlayerOne(playerTwo)">
+        PlayerTwo
+      </button> -->
+      </div>
+    </div>
+    <div class="gameOver hide">
+      <h1>YOU HAVE RETREATED!</h1>
+      <h1>GAME OVER</h1>
+      <img
+        src="https://media4.giphy.com/media/l9jiNVVkdsG4M/giphy.gif"
+        alt=""
+        class="gameOverImg"
+      />
+      <br />
+      <button class="restart" onclick="startGame()">RESTART GAME</button>
+    </div>
+    <!-- Game Stage -->
     <div class="gameStage">
       <!-- Player One -->
       <div class="playerOne">
@@ -40,29 +74,12 @@
           <img src="" alt="" class="hero" />
         </div>
       </div>
-
       <!-- Player Two -->
       <div class="playerTwo">
         <div class="playerOneImg">
           <img src="" alt="" class="alien" />
         </div>
       </div>
-    </div>
-
-    <!-- Controls -->
-    <h1>PLAYER ONE CONTROLS</h1>
-    <div class="controls">
-      <div class="controlButtons">
-        <button class="attack" onclick="startRound(playerTwo)">Attack!</button>
-        <button class="retreat">RETREAT</button>
-        <button class="reset" onclick="resetGame()">RESET GAME</button>
-      </div>
-      <!-- <button class="player1" onclick="attackPlayerTwo(playerOne)">
-        PlayerOne
-      </button>
-      <button class="player2" onclick="attackPlayerOne(playerTwo)">
-        PlayerTwo
-      </button> -->
     </div>
 
     <script src="app.js"></script>

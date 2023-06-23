@@ -1,8 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  border: solid white;
-  background-color: black;
+  background-image: url("https://i.ytimg.com/vi/UNOmaFs6KaY/maxresdefault.jpg");
   color: lime;
 }
 
@@ -14,11 +13,11 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 25px 0;
+  margin-top: 10px;
 }
 
 .spaceshipImg {
-  width: 10%;
+  width: 5%;
   margin: 0 25px;
 }
 
@@ -34,8 +33,6 @@ h1 {
   text-align: center;
   border-right: solid white;
   vertical-align: middle;
-
-  height: 25vh;
   width: 35%;
 }
 
@@ -52,15 +49,14 @@ h1 {
   font-weight: bold;
   text-align: center;
   border-radius: 50%;
-  height: 20vh;
   width: 25%;
+  line-height: 30px;
 }
 
 .playerTwoHeader {
   text-align: center;
   vertical-align: middle;
   border-left: solid white;
-  height: 25vh;
   width: 35%;
 }
 
@@ -71,12 +67,14 @@ h1 {
   background-image: url("https://images.unsplash.com/photo-1465101162946-4377e57745c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2UlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&w=1000&q=80");
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 100px 0;
+  padding: 50px 0;
+  margin: 50px 0;
 }
 
 .gameHeader {
   margin: 0 auto;
   width: 75%;
+  background-color: black;
 }
 .playerOne {
   width: 50%;
@@ -117,28 +115,38 @@ h1 {
   border: solid white;
 }
 
+.gameStage {
+  width: 75%;
+  height: 75%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.gameFeed {
+  text-align: center;
+  background-color: black;
+  border: solid lime;
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  margin: 30px auto;
+}
+
 .feed {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px auto;
-  border: solid blueviolet;
-  width: 50%;
-  height: 10vh;
+  margin: 50px auto;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
+  line-height: 50px;
+  width: 50%;
+  border-right: dashed lime;
 }
 
 .controls {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 0 auto;
-  margin-top: 30px;
-  border: solid lime;
-  height: 15vh;
-  width: 60%;
+  margin: auto;
 }
 
 button {
@@ -171,4 +179,24 @@ button:hover {
   background-color: green;
   border: solid turquoise;
   color: white;
+}
+
+.restart {
+  background-color: lime;
+  border: solid black;
+  color: black;
+  margin-top: 20px;
+}
+
+.gameOver {
+  text-align: center;
+  background-color: darkgray;
+  color: black;
+  padding: 25px;
+  margin: 25px auto;
+  width: 50%;
+}
+
+.hide {
+  display: none;
 }
